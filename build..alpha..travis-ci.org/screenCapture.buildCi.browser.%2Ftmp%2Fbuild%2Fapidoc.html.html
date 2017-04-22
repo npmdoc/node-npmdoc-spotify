@@ -1,0 +1,176 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/peol/node-spotify">spotify (v0.3.0)</a>
+</h1>
+<h4>A Spotify API library for node.js</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.spotify">module spotify</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.spotify.get">
+            function <span class="apidocSignatureSpan">spotify.</span>get
+            <span class="apidocSignatureSpan">(query, hollaback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.spotify.lookup">
+            function <span class="apidocSignatureSpan">spotify.</span>lookup
+            <span class="apidocSignatureSpan">(opts, hollaback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.spotify.search">
+            function <span class="apidocSignatureSpan">spotify.</span>search
+            <span class="apidocSignatureSpan">(opts, hollaback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.spotify" id="apidoc.module.spotify">module spotify</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.spotify.get" id="apidoc.element.spotify.get">
+        function <span class="apidocSignatureSpan">spotify.</span>get
+        <span class="apidocSignatureSpan">(query, hollaback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">get = function (query, hollaback) {
+
+    var opts = {
+        host: "api.spotify.com",
+        path: encodeURI(query),
+        method: "GET",
+        headers: { "Accept": "application/json" }
+    },
+    request = https.request(opts, makeResponse( hollaback ));
+    request.end();
+
+    request.on('error', function (err) {
+        hollaback (err, {});
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.spotify.lookup" id="apidoc.element.spotify.lookup">
+        function <span class="apidocSignatureSpan">spotify.</span>lookup
+        <span class="apidocSignatureSpan">(opts, hollaback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">lookup = function (opts, hollaback) {
+    var type = opts.type+'s';
+    var query = '/v1/'+type+'/'+opts.id;
+    this.get(query, hollaback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.spotify.search" id="apidoc.element.spotify.search">
+        function <span class="apidocSignatureSpan">spotify.</span>search
+        <span class="apidocSignatureSpan">(opts, hollaback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">search = function (opts, hollaback) {
+    var query = '/v1/search?type='+opts.type+'&amp;q='+opts.query;
+    this.get(query, hollaback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+Example
+-------
+```javascript
+var spotify = require('spotify');
+
+spotify.<span class="apidocCodeKeywordSpan">search</span>({ type: 'track', query: 'dancing in the moonlight' },
+function(err, data) {
+    if ( err ) {
+        console.log('Error occurred: ' + err);
+        return;
+    }
+
+    // Do something with 'data'
+});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
